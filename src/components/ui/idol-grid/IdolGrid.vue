@@ -4,11 +4,12 @@ import 'gridstack/dist/gridstack-extra.min.css';
 import {GridStack, type GridStackWidget} from 'gridstack';
 import {onMounted, ref} from "vue";
 import ImageItem from "@/components/ui/image-item/ImageItem.vue"
+import type {extGridStackWidget} from "@/lib/types/extGridStack.ts";
 
 const gridRef = ref(null);
 
-const defaultItem = {locked: true, src: '/defaultItem.png', noMove: true};
-const items = ref<GridStackWidget[]>([
+const defaultItem = {locked: true, imageSrc: '/defaultItem.png', noMove: true};
+const items = ref<extGridStackWidget[]>([
   { id: '111x', x: 0, y: 0, ...defaultItem },
   { id: '211x', x: 1, y: 2, ...defaultItem },
   { id: '311x', x: 1, y: 3, ...defaultItem },
@@ -19,7 +20,7 @@ const items = ref<GridStackWidget[]>([
   { id: '811x', x: 4, y: 3, ...defaultItem },
   { id: '911x', x: 4, y: 4, ...defaultItem },
   { id: '011x', x: 5, y: 6, ...defaultItem },
-  { id: '011x', x: 5, y: 6, src: '/defaultItem.png', h: 2 },
+  { id: '011x', x: 5, y: 6, imageSrc: '/defaultItem.png', h: 2 },
 ]);
 
 onMounted(() => {
@@ -51,7 +52,7 @@ onMounted(() => {
       class="grid-stack-item"
     >
       <div class="grid-stack-item-content">
-        <ImageItem :imageSrc="widget.src" />
+        <ImageItem :imageSrc="widget.imageSrc" />
       </div>
     </div>
   </div>
